@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ranking.css">
+
+    <title>Ranking de Canais do YouTube</title>
+</head>
+<body class="light-theme">
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="imagens/logo.png" style="width: 180px; height: auto;" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="youtube-header">
+            <h1 class="display-5 fw-bold">
+                Gerenciar Canais do 
+                <img id="youtube-logo" class="youtube-logo" src="imagens/youtube-logo.webp" alt="YouTube Logo">
+            </h1>
+        </div>
+
+        <div class="search-container d-flex align-items-center">
+
+            <a href="formulario.html" class="btn btn-primary rounded-circle me-2 d-flex align-items-center" style="height: 52px;width: 60px;">
+                <i class="fa-solid fa-plus fa-2xl"></i>
+            </a>
+
+            <div class="input-group flex-grow-1">
+                <input type="text" class="form-control search-input" placeholder="Pesquisar canais...">
+                <button class="btn btn-danger search-btn" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <button type="button" class="btn btn-outline-secondary filter-btn" data-bs-toggle="modal" data-bs-target="#filterModal">
+                <i class="fas fa-filter"></i> Filtros
+            </button>
+
+            <div class="dropdown sort-dropdown ms-2">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
+                    <i class="fas fa-sort"></i> Ordenar por
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sort-alpha-down me-2"></i>Nome (A-Z)</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-sort-alpha-up me-2"></i>Nome (Z-A)</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-users me-2"></i>Inscritos</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Visualizações</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-video me-2"></i>Vídeos</a></li>
+                </ul>
+            </div>
+
+            <div class="theme-switch">
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch">
+                    <span class="slider">
+                        <i class="fas fa-sun sun"></i>
+                        <i class="fas fa-moon moon"></i>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-hover" id="rankingTable">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 60px;">#</th>
+                            <th scope="col" style="width: 80px;"></th>
+                            <th scope="col">Canal</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">País</th>
+                            <th scope="col">Visualizações</th>
+                            <th scope="col">Inscritos</th>
+                            <th scope="col">Vídeos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Filtros -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel"><i class="fas fa-filter me-2"></i>Filtrar Canais</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Categoria</label>
+                        <select class="form-select">
+                            <option selected>Todas categorias</option>
+                            <option>Entretenimento</option>
+                            <option>Educação</option>
+                            <option>Vlogs</option>
+                            <option>Games</option>
+                            <option>Infantil</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">País</label>
+                        <select class="form-select">
+                            <option selected>Todos países</option>
+                            <option>Brasil</option>
+                            <option>EUA</option>
+                            <option>Reino Unido</option>
+                            <option>Índia</option>
+                            <option>Japão</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Número de inscritos</label>
+                        <div class="d-flex align-items-center">
+                            <input type="range" class="form-range flex-grow-1 me-3" min="0" max="100" step="1">
+                            <span class="badge bg-primary">10M+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ranking_gerenciar.js"></script>
+
+    <script>
+        // Alternar tema
+        const themeSwitch = document.getElementById('themeSwitch');
+        const youtubeLogo = document.getElementById('youtube-logo');
+        
+        themeSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                youtubeLogo.src = 'imagens/youtube-darkmode.png';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                youtubeLogo.src = 'imagens/youtube-logo.webp';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Verificar tema salvo
+        if (localStorage.getItem('theme') === 'dark') {
+            themeSwitch.checked = true;
+            document.body.classList.add('dark-theme');
+            youtubeLogo.src = 'imagens/youtube-darkmode.png';
+        }
+
+        // Atualizar dropdown de ordenação
+        const sortDropdown = document.getElementById('sortDropdown');
+        const sortItems = document.querySelectorAll('.dropdown-item');
+        
+        sortItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const icon = this.querySelector('i').cloneNode(true);
+                const text = this.textContent.trim();
+                
+                sortDropdown.innerHTML = '';
+                sortDropdown.appendChild(icon);
+                sortDropdown.appendChild(document.createTextNode(' ' + text));
+            });
+        });
+    </script>
+</body>
+</html>

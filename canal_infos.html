@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/canal_info.css">
+    <title>Ranking canais</title>
+</head>
+<body>
+    <nav class="navbar bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="ranking.html">
+                <img src="imagens/logo.png" style="width: 180px; height: auto;" alt="Logo">
+            </a>
+            <button id="logoutBtn" type="button" class="btn btn-outline-danger">SAIR</button>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Profile Card -->
+            <div class="col">
+                <div class="card h-100 text-center p-3">
+                    <div class="card-body">
+                        <img src="" class="user-avatar rounded-circle mb-3" alt="Avatar">
+                        <h3 class="card-title mb-0" id="nome"></h3>
+                        <div class="mt-2">
+                            <span class="badge bg-primary" id="tipo"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ranking Card -->
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4 text-center"><i class="fas fa-trophy metric-icon text-warning"></i>Posição no Ranking</h5>
+                        <div class="dropdown mb-4">
+                            <button class="dropdown-toggle w-100" type="button" id="rankingDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-users me-2"></i>Inscritos
+                            </button>
+                            <ul class="dropdown-menu w-100">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-users me-2"></i>Inscritos</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>Visualizações</a></li>
+                            </ul>
+                        </div>
+                        <div class="display-4 fw-bold text-center text-muted">
+                            <h1 id="ranking_inscritos"></h1>
+                            <h1 id="ranking_views" hidden></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Views Card -->
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4"><i class="fas fa-chart-line metric-icon red-metric"></i>Visualizações</h5>
+                        <div class="stat-number red-metric" id="visualizacoes"></div>
+                        <small class="text-muted">Visualizações desde a criação</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscribers Card -->
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4"><i class="fas fa-users metric-icon blue-metric"></i>Inscritos</h5>
+                        <div class="stat-number blue-metric" id="inscritos"></div>
+                        <small class="text-muted">Inscritos desde a criação</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Card -->
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4"><i class="fas fa-dollar-sign metric-icon text-success"></i>Receita</h5>
+                        <div class="dropdown mb-4">
+                            <button class="dropdown-toggle w-100" type="button" id="currencyDropdown" data-bs-toggle="dropdown">
+                                $ Dolares
+                            </button>
+                            <ul class="dropdown-menu w-100">
+                                <li><a class="dropdown-item" href="#">$ Dolares</a></li>
+                                <li><a class="dropdown-item" href="#">R$ Reais</a></li>
+                                <li><a class="dropdown-item" href="#">€ Euro</a></li>
+                                <li><a class="dropdown-item" href="#">£ Libras</a></li>
+                            </ul>
+                        </div>
+                        <div class="stat-number text-center" id="receita"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-2"><i class="fas fa-earth-americas metric-icon text-purple"></i>País</h5>
+                        <div class="stat-number" id="localidade"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4"><i class="fas fa-calendar metric-icon text-purple"></i>Data de criação</h5>
+                        <div class="stat-number" style="font-size: 24px;" id="data_criacao"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4"><i class="fas fa-film metric-icon text-purple"></i>Vídeos no total</h5>
+                        <div class="stat-number" id="quantidade_videos"></div>
+                        <small class="text-muted">Uploads desde a criação</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-7 mx-auto"> <!-- Alterado para 8 colunas (2x4) -->
+                <div class="card h-100 p-3 video-card">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h5 class="card-title mb-4"><i class="fas fa-star metric-icon text-purple"></i>Vídeo mais famoso</h5>
+                        <div class="stat-number flex-grow-1">
+                            <div class="ratio ratio-16by9">
+                                <iframe id="#video" src="https://www.youtube.com/embed/" 
+                                        title="YouTube video player" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ranking.js"></script>
+<script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function (e) {
+            const button = this.closest('.dropdown').querySelector('.dropdown-toggle');
+            const icon = this.querySelector('i')?.cloneNode(true);
+            const selectedText = this.textContent.trim();
+
+            // Atualiza botão
+            button.innerHTML = '';
+            if (icon) button.appendChild(icon);
+            button.appendChild(document.createTextNode(' ' + selectedText));
+
+            // Alterna visibilidade
+            const inscritos = document.getElementById('ranking_inscritos');
+            const views = document.getElementById('ranking_views');
+
+            if (selectedText.includes('Visualizações')) {
+                inscritos.hidden = true;
+                views.hidden = false;
+            } else {
+                inscritos.hidden = false;
+                views.hidden = true;
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

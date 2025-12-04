@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de cadastro para novos usuários">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/login.js"></script> 
+    <link rel="stylesheet" href="css/cadastro_login.css">
+    <title>Login</title>
+</head>
+<body class="bg-image" style="background-image: url(imagens/fundo_cadastro_login.png); background-size: cover; min-height: 100vh; font-family: 'Segoe UI', system-ui, sans-serif;">
+
+    <nav class="navbar sticky-top bg-dark bg-opacity-75">
+        <div class="container-fluid d-flex justify-content-between align-items-center py-2">
+            <a class="navbar-brand" href="#" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left fa-xl text-white"></i>
+            </a>
+            <img src="imagens/logo.png" alt="Logo do Site" class="img-fluid" style="height: 32px;">
+            <div class="dummy-space" style="width: 48px;"></div>
+        </div>
+    </nav>
+
+    <main class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="card auth-card">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <div class="avatar-upload mb-3">
+                        <img src="imagens/Portrait_Placeholder.png" 
+                             alt="Foto do perfil" 
+                             class="rounded-circle profile-picture"
+                             tabindex="0">
+                    </div>
+                    <h1 class="card-title h2" style="color: white;">Login</h1>
+                </div>
+
+                <form id="loginForm" method="POST">
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" 
+                               class="form-control" 
+                               id="email" 
+                               name="email"
+                               required
+                               placeholder="exemplo@dominio.com">
+                    </div>
+
+                    <div>
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="password" 
+                               name="password"
+                               required
+                               placeholder="Mínimo 8 caracteres">
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <a class="text-center" class="text-decoration-underline" id="forgot-password-link">esqueceu sua senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 mt-3">
+                        Entrar
+                    </button>
+
+                    <p class="text-center mt-3" style="color:white">
+                        Não tem uma conta? 
+                        <a href="cadastro.html" class="text-decoration-underline">Faça o cadastro</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
